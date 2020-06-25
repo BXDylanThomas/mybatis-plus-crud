@@ -1,0 +1,29 @@
+server:
+  port: 8044
+
+spring:
+  application:
+    name: service-crud
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/crud?useUnicode=true&characterEncoding=utf8&useSSL=false
+      username: root
+      password: root
+      hikari:
+        maximum-pool-size: 13
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.abit.domain.entity
+  global-config:
+    db-config:
+      id-type: id_worker
+      field-strategy: not_null
+      db-type: mysql
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+    refresh: true  #该配置不建议在生产环境打开！
+    sql-parser-cache: true #是否缓存 Sql 解析，默认不缓存
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
